@@ -4,6 +4,7 @@ import Forms from './components/Learning-exercises/Forms'
 import Testing from './components/Props'
 import List from './components/Learning-exercises/List'
 import ToggleSwitch from './components/Learning-exercises/ToggleSwitch'
+import DataFetch from './components/Learning-exercises/DataFetch'
 
 function App() {
 
@@ -13,7 +14,8 @@ function App() {
       {/* <Forms /> */}
       {/* <Testing title="Props Testing" name="Samuel" /> */}
       {/* <List /> */}
-      <ToggleSwitch />
+      {/* <ToggleSwitch /> */}
+      <DataFetch />
     </>
   )
 
