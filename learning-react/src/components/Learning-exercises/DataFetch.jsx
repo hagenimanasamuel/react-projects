@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./dataFetch.css";
+// import "./dataFetch.css";
 
 export default function DataFetch() {
     const dataUrl = 'https://jsonplaceholder.typicode.com/posts';

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./list.css";
+// import "./list.css";
 export default function List() {
     const [listType, setListType] = useState("ol");
     const items = ["food", "drink", "cabages", "Milk"];

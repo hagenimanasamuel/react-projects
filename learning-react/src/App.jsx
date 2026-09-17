@@ -5,6 +5,7 @@ import Testing from './components/Props'
 import List from './components/Learning-exercises/List'
 import ToggleSwitch from './components/Learning-exercises/ToggleSwitch'
 import DataFetch from './components/Learning-exercises/DataFetch'
+import Calculator from './components/Learning-exercises/Calculator'
 
 function App() {
 
@@ -15,7 +16,8 @@ function App() {
       {/* <Testing title="Props Testing" name="Samuel" /> */}
       {/* <List /> */}
       {/* <ToggleSwitch /> */}
-      <DataFetch />
+      {/* <DataFetch /> */}
+      <Calculator />
     </>
   )
 
