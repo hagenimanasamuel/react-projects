@@ -4,17 +4,28 @@ import "./timer.css";
 export default function Timer() {
     const [time, setTime] = useState(0);
     const [running, setRunning] = useState(false);
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
-        if(!running || time <= 0) return
+        if(!running || time <= 0) return;
         const id = setTimeout(() => {
             setTime(prev => prev - 1);
         }, 1000);
         return () => clearTimeout(id);
     }, [running, time]);
 
+    useEffect(() => {
+        if(time === 0 && running) {
+            setRunning(false);
+            setMessage("Time's Up");
+        };
+    }, [running, time]);
+
     const start = () => {
-        if(time > 0) setRunning(true);
+        if(time > 0) {
+            setRunning(true);
+            setMessage('');
+        }
     }
 
     const stop = () => setRunning(false);
@@ -30,7 +41,8 @@ export default function Timer() {
             <button onClick={start} disabled={running || time <= 0}>Start Timer</button>
             <button onClick={stop} disabled={!running}>Pause</button>
             <button onClick={reset}>Reset</button>
-            <h1>{time}</h1>
+            {/* <h1>{time}</h1> */}
+            {message && <h1>{message}</h1>}
         </>
     )
 }
