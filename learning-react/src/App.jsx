@@ -6,7 +6,9 @@
 // import ToggleSwitch from './components/Learning-exercises/ToggleSwitch'
 // import DataFetch from './components/Learning-exercises/DataFetch'
 // import Calculator from './components/Learning-exercises/Calculator'
-import Timer from './components/Learning-exercises/Timer'
+// import Timer from './components/Learning-exercises/Timer';
+
+import ToDo from "./components/Learning-exercises/toDo"
 
 function App() {
 
@@ -19,7 +21,8 @@ function App() {
       {/* <ToggleSwitch /> */}
       {/* <DataFetch /> */}
       {/* <Calculator /> */}
-      <Timer />
+      {/* <Timer /> */}
+      <ToDo />
     </>
   )
 
