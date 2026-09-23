@@ -8,7 +8,7 @@
 // import Calculator from './components/Learning-exercises/Calculator'
 // import Timer from './components/Learning-exercises/Timer';
 
-import ToDo from "./components/Learning-exercises/toDo"
+import ToDo from "./components/Learning-exercises/ToDo.jsx";
 
 function App() {
 

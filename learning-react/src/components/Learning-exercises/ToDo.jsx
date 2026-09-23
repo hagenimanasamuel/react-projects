@@ -5,6 +5,7 @@ export default function ToDo() {
     const [input, setInput] = useState('');
     const [tasks, setTasks] = useState([]);
     const [listType, setListType] = useState('ul');
+    const [done, setDone] = useState(false);
 
     function addTask() {
         setTasks([...tasks, input]);
@@ -20,11 +21,15 @@ export default function ToDo() {
             <button onClick={addTask}>Add Task</button>
             <h1>Your Task</h1>
             <Listing>
-                {tasks.map(task => (
-                    <li>{task}</li>
+                {tasks.map((task, index) => (
+                    <div className="items">
+                        <li key={index}>{task}</li>
+                        <input type="checkbox" />
+                        <button>Delete</button>
+                    </div>
                 ))}
             </Listing>
-            <button onClick={() => setListType(listType === "ul" ? "ol" : "ul")}>Change List type</button>
+            {tasks.length > 0 && <button onClick={() => setListType(listType === "ul" ? "ol" : "ul")}>Change List type</button>}
         </>
     )
 }
