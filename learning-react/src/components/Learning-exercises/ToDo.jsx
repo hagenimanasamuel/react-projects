@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./todo.css";
 
 export default function ToDo() {
@@ -17,6 +17,12 @@ export default function ToDo() {
         }))
     }
 
+    function removeItem(index) {
+        setTasks(tasks.filter((task, i) => {
+            return i !== index;
+        }))
+    } 
+
     const Listing = listType;
 
     return (
@@ -27,10 +33,10 @@ export default function ToDo() {
             <h1>Your Task</h1>
             <Listing>
                 {tasks.map((task, index) => (
-                    <div className="items">
-                        <li key={index} style={{textDecoration: task.done ? 'line-through' : 'none'}}>{task.text}</li>
+                    <div className="items" key={index}>
+                        <li style={{textDecoration: task.done ? 'line-through' : 'none'}}>{task.text}</li>
                         <input type="checkbox" checked={task.done} onChange={() => toggleDone(index)}/>
-                        <button>Delete</button>
+                        <button onClick={() => removeItem(index)}>Delete</button>
                     </div>
                 ))}
             </Listing>
