@@ -5,11 +5,16 @@ export default function ToDo() {
     const [input, setInput] = useState('');
     const [tasks, setTasks] = useState([]);
     const [listType, setListType] = useState('ul');
-    const [done, setDone] = useState(false);
 
     function addTask() {
-        setTasks([...tasks, input]);
+        setTasks([...tasks, {text: input, done: false}]);
         setInput('');
+    }
+
+    function toggleDone(index) {
+        setTasks(tasks.map((task, i) => {
+            return i === index ? {...task, done: !task.done} : task
+        }))
     }
 
     const Listing = listType;
@@ -23,8 +28,8 @@ export default function ToDo() {
             <Listing>
                 {tasks.map((task, index) => (
                     <div className="items">
-                        <li key={index}>{task}</li>
-                        <input type="checkbox" />
+                        <li key={index} style={{textDecoration: task.done ? 'line-through' : 'none'}}>{task.text}</li>
+                        <input type="checkbox" checked={task.done} onChange={() => toggleDone(index)}/>
                         <button>Delete</button>
                     </div>
                 ))}
