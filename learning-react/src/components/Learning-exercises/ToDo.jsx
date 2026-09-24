@@ -13,7 +13,7 @@ export default function ToDo() {
 
         const messageTimer = setTimeout(() => {
             setVisible(false);
-        }, 2000);
+        }, 3000);
     },[visible, message]);
 
     function addTask() {
