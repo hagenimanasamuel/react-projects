@@ -19,7 +19,7 @@ export default function ToDo() {
     }, [visible, message]);
 
     function addTask() {
-        if(!input.trim()) return;
+        if (!input.trim()) return;
         setTasks([...tasks, { text: input, done: false }]);
         setInput('');
         setMessage("Task added Successfully");
@@ -48,7 +48,11 @@ export default function ToDo() {
         <>
             {visible && <span className="message">{message}</span>}
             <h1>To-Do App</h1>
-            <input type="text" placeholder="input task" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "ENTER" && addTask()} />
+            <input type="text" placeholder="input task" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={e => {
+                if (e.key === 'ENTER') {
+                    addTask();
+                }
+            }} />
             <button onClick={addTask}>Add Task</button>
             <h1>Your Task</h1>
             <Listing>
