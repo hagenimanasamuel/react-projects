@@ -9,15 +9,18 @@ export default function ToDo() {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        if(!visible) return;
+        if (!visible) return;
 
         const messageTimer = setTimeout(() => {
             setVisible(false);
         }, 3000);
-    },[visible, message]);
+
+        return () => clearTimeout(messageTimer);
+    }, [visible, message]);
 
     function addTask() {
-        setTasks([...tasks, {text: input, done: false}]);
+        if(!input.trim()) return;
+        setTasks([...tasks, { text: input, done: false }]);
         setInput('');
         setMessage("Task added Successfully");
         setVisible(true);
@@ -25,7 +28,7 @@ export default function ToDo() {
 
     function toggleDone(index) {
         setTasks(tasks.map((task, i) => {
-            return i === index ? {...task, done: !task.done} : task
+            return i === index ? { ...task, done: !task.done } : task
         }))
         setMessage("Task marked as done");
         setVisible(true);
@@ -37,7 +40,7 @@ export default function ToDo() {
         }))
         setMessage('Task removed successfully');
         setVisible(true);
-    } 
+    }
 
     const Listing = listType;
 
@@ -45,14 +48,14 @@ export default function ToDo() {
         <>
             {visible && <span className="message">{message}</span>}
             <h1>To-Do App</h1>
-            <input type="text" placeholder="input task" value={input} onChange={(e) => setInput(e.target.value)}/>
+            <input type="text" placeholder="input task" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "ENTER" && addTask()} />
             <button onClick={addTask}>Add Task</button>
             <h1>Your Task</h1>
             <Listing>
                 {tasks.map((task, index) => (
                     <div className="items" key={index}>
-                        <li style={{textDecoration: task.done ? 'line-through' : 'none'}}>{task.text}</li>
-                        <input type="checkbox" checked={task.done} onChange={() => toggleDone(index)}/>
+                        <li style={{ textDecoration: task.done ? 'line-through' : 'none' }}>{task.text}</li>
+                        <input type="checkbox" checked={task.done} onChange={() => toggleDone(index)} />
                         <button onClick={() => removeItem(index)}>Delete</button>
                     </div>
                 ))}
