@@ -27,6 +27,7 @@ export default function ToDo() {
 
     return (
         <>
+            <span className="message">Done!!</span>
             <h1>To-Do App</h1>
             <input type="text" placeholder="input task" value={input} onChange={(e) => setInput(e.target.value)}/>
             <button onClick={addTask}>Add Task</button>
